@@ -1,0 +1,468 @@
+\documentclass[]{article}
+\usepackage{amsmath}
+%opening
+\title{Goldstein Mechanics Notes}
+\author{Yehyun Choi}
+\numberwithin{equation}{section}
+\begin{document}
+
+\maketitle
+
+\section{Survey of the Elementary Principles}
+\subsection{Mechanics of a particle}
+The vector velocity $\mathbf{v}$ is defined as 
+\begin{equation}\mathbf{v}=\frac{\mathrm{d}\mathbf{r}}{\mathrm{d}t}\end{equation}
+where $\mathbf{r}$ is the radius vector of a particle (which can be thought of as the particle's position)
+The linear momentum $\mathbf{p}$ is defined as
+\begin{equation}\mathbf{p}=m\mathbf{v}\end{equation}
+Newton's second law of motion states that in inertial frames, the motion of the particle can be described by the differential equation
+\begin{equation}\boxed{\mathbf{F}=\dot{\mathbf{p}}}\end{equation}
+When the mass of the particle is constant, this reduces to 
+$$\mathbf{F}=m\frac{\mathrm{d}\mathbf{v}}{\mathrm{d}t}=m\mathbf{a}$$
+where $\mathbf{a}$ is the vector acceleration and is defined by 
+\begin{equation}\mathbf{a}=\frac{\mathrm{d}^2\mathbf{r}}{\mathrm{d}t^2}\end{equation}
+From the equation $\mathbf{F}=\dot{\mathbf{p}}$, we can derive a useful conservation theorem:\\
+
+Conservation Theorem for the Linear Momentum of a Particle: If the total force, $\mathbf{F}$, is zero, then $\dot{\mathbf{p}}=\mathbf{0}$ is zero and the linear momentum $\mathbf{p}$, is conserved.\\
+
+The angular momentum of the particle about point O, denoted by $\mathbf L$ is defined as 
+\begin{equation}\mathbf L=\mathbf r\times\mathbf p\end{equation}
+where $\mathbf r$ is the radius vector $\textbf{from}$ O to the particle. 
+The torque about O is defined as 
+\begin{equation}\mathbf N=\mathbf r\times\mathbf F\end{equation}
+we now take the time derivative of the angular momentum
+$$\frac{\mathrm d\mathbf L}{\mathrm dt}=\frac{\mathrm d}{\mathrm dt}(\mathbf r\times\mathbf p)=\frac{\mathrm d}{\mathrm dt}(\mathbf r\times m\mathbf v)=\mathbf v\times m\mathbf v+\mathbf r\times\frac{\mathrm d}{\mathrm dt}(m\mathbf v)$$
+the first term vanishes, leaving us with
+\begin{equation}\boxed{\dot{\mathbf L}=\mathbf r\times\frac{\mathrm d}{\mathrm dt}(m\mathbf v)=\mathbf r\times\mathbf F=\mathbf N}\end{equation}
+this yields another conservation theorem:\\
+
+Conservation Theorem for the Angular Momentum of a Particle: If the total torque, $\mathbf N$. is zero then $\dot{\mathbf L}=\mathbf 0$,  and the angular momentum $\mathbf L$ is conserved.\\
+
+The work done by an external force $\mathbf F$ going from point 1 to point 2 is defined to be 
+\begin{equation}W_{12}=\int^2_1\mathbf F\cdot\mathrm d\mathbf s\end{equation}
+For a particle with constant mass, the integral becomes
+$$\int\mathbf F\cdot\mathrm d\mathbf s=m\int\frac{\mathrm d\mathbf v}{\mathrm dt}\cdot\mathbf v\mathrm dt=\frac m2\int\frac{\mathrm d}{\mathrm dt}(v^2)\mathrm dt$$
+where we have used the vector identity $\frac{\mathrm d}{\mathrm dx}(f^2)=\frac{\mathrm d}{\mathrm dt}(\mathbf f\cdot\mathbf f)=2\mathbf f\cdot \frac{\mathrm d\mathbf f}{\mathrm dt}$. We can now see 
+$$W_{12}=\frac m2(v^2_2-v^2_1)$$
+Defining $mv^2/2$ to be the kinetic energy of the particle T, we can rewrite this expression as 
+\begin{equation}W_{12}=T_2-T_1\end{equation}
+we now analyze a special case where the force $\mathbf F$ is conservative. That is,
+$$\oint\mathbf F\cdot\mathrm d\mathbf s=0$$
+according to Strokes' theorem, 
+$$\int(\nabla\times\mathbf F)\cdot\mathrm d\mathbf a=0$$
+one possible solution for $\mathbf F$ is when $\mathbf F$ is expressed as a gradient of a scalar function. We choose this function to be 
+$$\mathbf F=-\nabla V(\mathbf r)$$
+it is obvious that this fits the original condition because the curl of a gradient is always zero. 
+
+According to the fundamental theorem for gradients, the potential change oer a differential path length we have
+$$\mathbf F\cdot\mathrm d\mathbf s=-\mathrm dV$$
+using the definition of the work, we can see that 
+\begin{equation}W_{12}=V_1-V_2\end{equation}
+for a conservative system.
+
+combining equation 1.9 with 1.10, we have the result
+\begin{equation}\boxed{T_1+V_1=T_2+V_2}\end{equation}
+in words, this states\\
+
+Energy Conservation Theorem for a Particle: If the force acting on a particle are conservative, then the total energy of the particle, T+V is conserved.
+\subsection{Mechanics of a system of particles}
+Let us analyze a system of particles, in which the particles experience external forces and internal forces. Newton's second law for the ith particle is written as
+$$\sum_j \mathbf F_{ji}+\mathbf F_i^{(e)}=\dot{\mathbf p_i}$$
+summed over all particles, 
+$$\frac{\mathrm d^2}{\mathrm dt^2}\sum_i m_i\mathbf r_i=\sum_i\mathbf F_i^{(e)}+\sum_{i,j}\mathbf F_{ji}$$
+where $\mathbf F_ij$ is the force acting on particle j by particle i. The second term vanishes because of $\textbf{the weak law of action and reation}$ (which is the same as Newton's third law of motion), which states
+\begin{equation}\mathbf F_{ij}+\mathbf F_{ji}=\mathbf 0\end{equation}
+and because $\mathbf F_{i,i}$ is naturally zero.
+the center of mass is defined to be the average of the radii vectors of the particles, weighted in proportion to their mass.
+\begin{equation}\mathbf R=\frac{\sum m_i\mathbf r_i}{\sum m_i}=\frac{\sum m_i\mathbf r_i}{M}\end{equation}
+the equation of motion summed over all particles becomes 
+\begin{equation}M\frac{\mathrm d^2\mathbf R}{\mathrm dt^2}=\mathbf F^{(e)}\end{equation}
+where $\mathbf F^{(e)}$ is the net external force acting on our system of particles.
+
+The total linear momentum of the system of particles is 
+\begin{equation}\boxed{\mathbf P=\sum m_i\frac{\mathrm d\mathbf r_i}{\mathrm dt}=M\frac{\mathrm d\mathbf R}{\mathrm dt}}\end{equation}
+equation 1.23 can be restated as a conservation theorem;\\
+
+Conservatino Theorem for the Linear Momentum of a System of Particles: If the total external force is zero, the total linear momentum is conserved.\\
+
+the total angular momentum can be obtained by finding the individual angular momenta and summing them over i.
+$$\sum_i(\mathbf r_i\times\dot{\mathbf p_i})=\sum_i\frac{\mathrm d}{\mathrm dt}(\mathbf r_i\times\mathbf p_i)=\mathbf{\dot L}=\sum_i\mathbf r_i\times\mathbf F_i^{(e)}+\sum_{\substack{i,j\\i\ne j}}\mathbf r_i\times\mathbf F_{ji}$$
+the last term can be written as
+$$\mathbf r_i\times\mathbf F_{ji}+\mathbf r_J\times\mathbf F_{ij}=(\mathbf r_i-\mathbf r_j)\times\mathbf F_{ji}$$
+but since the vector $\mathbf r_i-\mathbf r_j$ is identical to the vector $\mathbf r_{ij}$ from j to i, the entire term vanishes. This is known as the $\textbf{strong law of action and reaction}$, which states that the internal forces between two particles are equal and opposite and lie along the line joining the particles. Using this, 
+\begin{equation}\frac{\mathrm d\mathbf L}{\mathrm dt}=\mathbf N^{(e)}\end{equation}
+corresponding to the equation is a conservation theorem:\\
+
+Conservation Theorem for Total Angular Momentum: $\mathbf L$ is constant in time if the applied (external) torque is zero.\\
+
+This conservation theorem assumes the weak law of action and reaction is valid. However, $\textbf{it is not always valid}$ (system involving magnetic charges. for example). However, there is an alternate conservation law involving the angular momentum (for magnetic charges, the sum of the angular momentum and the electromagnetic angular momentum of the field are conserved)
+
+To find an equation relating the total angular momentum to the center of mass as we did in equation 1.15, we start by finding the total angular momentum of the system with respect to the origin.
+$$\mathbf L=\sum_i\mathbf r_i\times\mathbf p_i$$
+we define the relative position/velocity to be 
+\begin{align}
+	&\mathbf r_i=\mathbf r'_i+\mathbf R\\
+	&\mathbf v_i=\mathbf v'_i+\mathbf v
+\end{align}
+where 
+$$\mathbf v=\frac{\mathrm d\mathbf R}{\mathrm dt}$$
+and 
+$$\mathbf v'_i=\frac{\mathrm d\mathbf r'_i}{\mathrm dt}$$
+where $\mathbf r_i'$ is the position of the particle with respect to the center of mass and $\mathbf v_i'$ is the velocity of the particle in the center of mass reference frame.
+
+plugging in equation 1.17 and 1.18, the total angular momentum becomes 
+$$\mathbf L=\sum_i(\mathbf r'_i+\mathbf R)\times m_i(\mathbf v'_i+\mathbf v)$$
+expanding this expression,
+$$\mathbf L=\sum_i\mathbf R\times m_i\mathbf v+\sum_i\mathbf r'_i\times m_i\mathbf v'_i +\left(\sum_i m_i\mathbf r'_i\right)\times\mathbf v+\mathbf R\times\frac{\mathrm d}{\mathrm dt}\sum_i m_i\mathbf r'_i$$
+where we've used the fact $\mathbf v$ and $\mathbf R$ is constant when summing over $\mathbf r'_i$. We also notice the last two terms cancel out because 
+$$\sum_i m_i \mathbf r_i'=\sum_i m_i\mathbf r_i -\sum_i m_i\mathbf R=M\mathbf R-M\mathbf R=\mathbf 0$$
+therefore, the total angular momentum about O is 
+\begin{equation}\boxed{\mathbf L=\mathbf R\times M\mathbf v+\sum_i\mathbf r'_i\times\mathbf p'_i}\end{equation}
+in words, the total angular momentum is the angular momentum about the center of mass plus the angular momentum of the center of mass.
+
+To calculate the energy of a system of particles, we start off by calculating the work done on a single particle:
+\begin{equation}W_{12}=\sum_i\int^2_1\mathbf F_i\cdot\mathrm d\mathbf s_i=\sum_i\int^2_1\mathbf F^{(e)}_i\cdot\mathrm d\mathbf s_i+\sum_{\substack{i,j\\i\ne j}}\int^2_1\mathbf F_{ji}\cdot\mathrm d\mathbf s_i\end{equation}
+the second term can be rewritten as 
+$$\sum_i\int^2_1\mathbf F_i\cdot\mathrm d\mathbf s=\sum_i\int^2_1m_i\mathbf{\dot v_i}\cdot\mathbf v_i\mathrm dt=\sum_i\int^2_1\mathrm d\left(\frac 12 m_iv_i^2\right)$$
+therefore, the work done can be written as the difference between the final and initial kinetic energies
+$$W_{12}=T_2-T_1$$
+where the kinetic energy of the system is 
+\begin{equation}T=\frac 12\sum_i m_iv_1^2\end{equation}
+in the center of mass frame of reference,
+\begin{align*}
+	T&=\frac 12\sum_i m_i(\mathbf v+\mathbf v_i')\cdot(\mathbf v+\mathbf v_i')\\
+	&=\frac 12\sum_i m_iv^2+\frac 12\sum_i m_iv_i^2+\mathbf v\cdot\frac{\mathrm d}{\mathrm dt}\left(\sum_i m_i\mathbf r_i'\right)
+\end{align*}
+since the last term vanishes, 
+\begin{equation}\boxed{T=\frac 12Mv^2+\frac 12\sum_i m_iv_i'^2}\end{equation}
+when the external forces are conservative, the first term on the right side ($\sum_i\int^2_1\mathbf F_i^{(e)}\cdot\mathrm d\mathbf s_i$) becomes\footnote{here we use spacial gradients because the author defined the force field as the spacial gradient of the potential. As far as I know, they are similar to the gradient as $\nabla_{\mathbf r}V=\nabla V\cdot\nabla|r|=\nabla V$, and the equations still make sense if the spacial gradients are replaced with gradients.}
+$$-\sum_i\int^2_1\nabla_iV_i\cdot\mathrm d\mathbf s_i=-\sum_iV_i\Bigr\rvert^2_1$$
+where we have used the fundamental theorem for gradients.
+
+
+to satisfy the strong law of action and reaction, we define a new function of the distance between the particles, that is $V_{ij}=V_{ij}(|\mathbf r_i-\mathbf r_j|)$.
+The forces acting on the particles are equal and opposite:
+\begin{equation}\mathbf F_{ji}=-\nabla_iV_{ij}=\nabla_jV_{ij}=-\mathbf F_{ij}\end{equation}
+because 
+\begin{align*}
+	\frac{\partial V_{ij}}{\partial \mathbf r_i}=\frac{\partial V_{ij}}{\partial\mathbf{(r_i-r_j)}}\frac{\partial\mathbf{(r_i-r_j)}}{\partial \mathbf r_i}=(1-\delta_{ji})\nabla_{i-j}V_{ij}\\
+	\frac{\partial V_{ij}}{\partial \mathbf r_j}=\frac{\partial V_{ij}}{\partial\mathbf{(r_i-r_j)}}\frac{\partial\mathbf{(r_i-r_j)}}{\partial \mathbf r_j}=(\delta_{ij}-1)\nabla_{i-j}V_{ij}
+\end{align*}
+and
+$$\nabla_\mathbf{r_i}r_j=\nabla r_j\nabla r_i=\nabla_{\mathbf r_j}r_i$$
+and lie along the line joining the two particles,
+\begin{equation}\nabla V_{ij}(|\mathbf r_i-\mathbf r_j|)=(\mathbf r_i-\mathbf r_j)f\end{equation}
+since 
+$$\nabla V_{ij}(|\mathbf r_i-\mathbf r_j|)=\frac{\partial V_{ij}}{\partial (|\mathbf r_i-\mathbf r_j|)}\nabla(|\mathbf r_i-\mathbf r_j|)=f\cdot\frac{\mathbf{r_i-r_j}}{|\mathbf{r_i-r_j}|}$$
+the same result can be achieved using the definition of a conservative force setting the direction of the force radial.\\
+
+the second term in equation 1.20 ($\sum_{i.j}\int^2_1\mathbf F_{ji}\cdot\mathrm d\mathbf s_i$) can be rewritten as a sum over pairs of particles, in the form 
+$$-\int^2_1(\nabla_iV_{ij}\cdot\mathrm d\mathbf s_i+\nabla_jV_{ij}\cdot\mathrm d\mathbf s_j)=-\int^2_1\nabla_{ij}V_{ij}\cdot\mathrm d\mathbf r_{ij}$$
+where $\mathbf{r_i-r_j=r_{ij}}$ and $\nabla_{ij}$ is the gradient with respect to $\mathbf r_{ij}$
+then the sum over all particles becomes
+$$-\frac 12\sum_{i,j}\int^2_1\nabla_{ij}V_{ij}\cdot\mathrm d\mathbf r_{ij}=-\frac 12\sum_{i,j}V_{ij}\Bigr\rvert^2_1$$
+we can now define a total potential energy of the system,
+\begin{equation}\boxed{V=\sum_iV_i+\frac 12\sum_{\substack{i,j\\i\ne j}}V_{ij}}\end{equation}
+\subsection{Constraints}
+types of constraints:
+\begin{itemize}
+	\item Holonomic: when there exists a curve particle is confined to: a bead moving on a wire
+	\item Nonholonomic: when there exists a region particle is confined in. Example: the walls of a gas container
+	\item Rhenomous: when the equations of constraint contain time as an explicit variable
+	\item Scleronomous: when the equations of constraint are time-independent
+\end{itemize}
+constraints introduce two types of difficulties in the solution of mechanical problems.\\
+
+First, the coordinates are no longer all independent. 
+
+In the case of holonomic constraints, this is solved by using $\textbf{generalized coordinates}$: that is, $3N-k$ independent variables for a system of $N$ particles and $k$ equations of constraints. One example of generalized coordinates is the angles to the vertical in a double pendulum system. 
+
+For nonholonomic constraints, there is no general way to solve for the equations of constraints, making it significantly harder. 
+
+Second, having constraints on the equations of the motion implies the existence of unknown forces. To surmount this difficulty, we can formulate the mechanics that the forces of constraint disappear. 
+\subsection{D' Alembert's principle and Lagrange's equations}
+A $\textbf{virtual displacement}$ refers to a change in the configuration of the system as the result of any arbitrary infinitesimal change of the coordinates, consistent with the forces and constraints imposed on the system at the given instant t. If the system is in equilibrium, $\mathbf{F_i}=0$ for each particle, and the dot product with  the virtual displacement $\delta\mathbf{r_i}$, summed over all particles, has to be zero.
+$$\sum_i\mathbf F_i\cdot\delta\mathbf r_i=0$$
+since the total force is composed of the applied force, $\mathbf F_i^{(a)}$, and the force of constraint, $\mathbf f_i$,
+$$\sum_i\mathbf F_i^{(a)}\cdot\delta\mathbf r_i+\sum_i\mathbf F_i\cdot\delta\mathbf r_i=0$$
+in systems where the net virtual work of the forces of constraint is zero (for example, if a particle is confined to move on a surface, the force of constraint is perpendicular to the surface, and the virtual displacement is parallel to the surface. This is $\textbf{no longer true if sliding friction forces are present}$.) Therefore,
+\begin{equation}\sum_i\mathbf F_i^{(a)}\cdot\delta\mathbf r_i=0\end{equation}
+This is known as the $\textbf{principle of virtual work}$. However, this form is not very useful since it doesn't say anything about the $q_i$. 
+
+The equation of motion can be rewritten as 
+$$\mathbf F_i-\dot{\mathbf{p_i}}=0$$
+Multiplying by the virtual displacement and summing over i particles,
+$$\sum_i\mathbf{(F_i-\dot{p_i})}\cdot\delta\mathbf r_i=0$$
+decomposing the net force into applied forces and forces of constraint and setting the work done by forces of constraint to zero, 
+\begin{equation}\sum_i\mathbf{(F_i^{(a)}-\dot{p_i})\cdot\delta\mathbf r_i}=0\end{equation}
+This is called $\textbf{D'Alembert's principle}$. 
+
+we start rewriting this equation in terms of the coordinates $q_n$ by the transformation equations, 
+$$\mathbf r_i=\mathbf r_i(q_1,q_2,\cdots,q_n,t)$$
+using the chain rules of partial differentiation, $\mathbf v_i$ is expressed as 
+\begin{equation}\mathbf v_i\equiv\frac{\mathrm d\mathbf r_i}{\mathrm dt}=\sum_k\frac{\partial\mathbf r_i}{\partial q_k}\dot q_k+\frac{\partial\mathbf r_i}{\partial t}\end{equation}
+similarly, the virtual displacement can be written as 
+\begin{equation}\delta\mathbf r_i=\sum_j\frac{\partial\mathbf r_i}{\partial q_j}\delta q_j\end{equation}
+In terms of the generalized coordinates, the virtual work becomes 
+\begin{align*}
+	\sum_i\mathbf F_i\cdot\delta\mathbf r_i&=\sum_{i,j}\mathbf F_i\cdot\frac{\partial\mathbf r_i}{\partial q_j}\delta q_j\\
+	&=\sum_jQ_j\delta q_j
+\end{align*}
+where $Q_j$ is called the components of the $\textbf{generalized force}$, defined as
+\begin{equation}\boxed{Q_j=\sum_i\mathbf F_i\cdot\frac{\partial\mathbf r_i}{\partial q_j}}\end{equation}
+the second term in equation 1.27 can be written as 
+$$\sum_i\mathbf{\dot p_i\cdot\delta r_i}=\sum_i m_i\mathbf{\ddot r_i\cdot\delta r_i}$$
+using equation 1.29,
+$$\sum_{i,j}m_i\mathbf{\ddot r_i}\cdot\frac{\partial\mathbf r_i}{\partial q_j}\delta q_j$$
+consider now the relation
+\begin{equation}\sum_im_i\mathbf{\ddot r_i}\cdot\frac{\partial\mathbf r_i}{\partial q_j}=\sum_i\left[\frac{\mathrm d}{\mathrm dt}\left(m_i\mathbf{\dot r_i}\cdot\frac{\partial\mathbf r_i}{\partial q_j}\right)-m_i\mathbf{\dot r_i}\cdot\frac{\mathrm d}{\mathrm dt}\left(\frac{\partial\mathbf r_i}{\partial q_j}\right)\right]\end{equation}
+the last term of equation 1.31 is 
+$$\frac{\mathrm d}{\mathrm dt}\left(\frac{\partial\mathbf r_i}{\partial q_j}\right)=\frac{\partial\mathbf{\dot r_i}}{\partial q_j}=\sum_k\frac{\partial^2\mathbf r_i}{\partial q_j\partial q_k}\dot q_k+\frac{\partial^2\mathbf r_i}{\partial q_j\partial t}=\frac{\partial\mathbf v_i}{\partial q_j}$$
+we can also see that
+\begin{equation}\frac{\partial\mathbf v_i}{\partial\dot q_j}=\frac{\partial\mathbf r_i}{\partial q_j}\end{equation}
+which can be obtained by taking the partial derivative of equation 1.28.
+Substituting these changes in equation 1.31 leads to the result that
+$$\sum_im_i\mathbf{\ddot r_i}\cdot\frac{\partial r_i}{\partial q_j}=\sum_i\left[\frac{\mathrm d}{\mathrm dt}\left(m_i\mathbf v_i\cdot\frac{\partial\mathbf v_i}{\partial\dot q_j}\right)-m_i\mathbf v_i\cdot\frac{\partial\mathbf v_i}{\partial q_j}\right]$$
+and the second term on the left hand side of equation 1.27 can be expanded into
+$$
+\sum_j \left\{\frac{\mathrm d}{\mathrm dt}\left[\frac{\partial}{\partial\dot q_j}\left(\sum_i\frac{1}{2} m_iv_i^2\right)\right]-\frac{\partial}{\partial q_j}\left(\sum_i\frac 12m_i^2v_i^2\right)-Q_j\right\}\delta q_j
+$$
+since $\sum_i\frac 12m_iv_i^2$ is the kinetic energy of the system, D'Alembert's principle becomes
+\begin{equation}\sum_j\left\{\left[\frac{\mathrm d}{\mathrm dt}\left(\frac{\partial T}{\partial\dot q_j}\right)-\frac{\partial T}{\partial q_j}\right]-Q_j\right\}\delta q_j=0\end{equation}
+If the constraints are holonomic, it is possible to find independent coordinates that contain the constraint conditions implicitly. Therefore, the only way 1.33 to hold is for the individual coefficients to vanish:
+\begin{equation}\frac{\mathrm d}{\mathrm dt}\left(\frac{\partial T}{\partial\dot q_j}\right)-\frac{\partial T}{\partial q_j}-Q_j\end{equation}
+When the forces are derivable from a scalar potential function V, the generalized forces can be written as
+$$Q_j=\sum_i\mathbf F_i\cdot\frac{\partial\mathbf r_i}{\partial q_j}=-\sum_i\nabla_iV\cdot\frac{\partial\mathbf r_i}{\partial q_j}$$
+which is the same as the partial derivative of -V with respect to $q_j$:
+$$Q_j=-\frac{\partial V}{\partial q_i}$$
+If the potential V does not depend on the generalized velocities, equation 1.34 can be rewritten as
+\begin{equation}\boxed{\frac{\mathrm d}{\mathrm dt}\left(\frac{\partial L}{\partial\dot q_j}\right)-\frac{\partial L}{\partial q_j}=0}\end{equation}
+where L, the Lagrangian, is 
+\begin{equation}L=T-V\end{equation}
+\subsection{Velocity-Dependent potentials and the dissipitation function}
+For a velocity-dependent potential, Lagrange's equations can be put in the form 1.35 if the generalized forces are obtained from the equation
+\begin{equation}Q_j=-\frac{\partial U}{\partial q_i}+\frac{\mathrm d}{\mathrm dt}\left(\frac{\partial U}{\partial \dot q_j}\right)\end{equation}
+Here U may be called a $\textbf{generalized coordinates}$. This kind of field applies to the electromagnetic forces on moving charges.\\
+Both $\mathbf E$ and $\mathbf B$ are continuous functions of time and position derivable from a scalar potential and a vector potential:
+\begin{align*}
+	\mathbf E=-\nabla\phi-\frac{\partial\mathbf A}{\partial t}\\
+	\mathbf B=\nabla\times\mathbf A
+\end{align*}
+The generalized potential of the system is then
+$$U=q\phi-q\mathbf{A\cdot v}$$
+so the Lagrangian is
+$$L=\frac 12mv^2-q\phi+q\mathbf{A\cdot v}$$
+considering just the x-component of Lagrange's equations gives
+$$m\ddot x=q\left(v_x\frac{\partial A_x}{\partial x}+v_y\frac{\partial A_y}{\partial  x}+v_z\frac{\partial A_z}{\partial x}\right)-q\left(\frac{\partial\phi}{\partial x}+\frac{\mathrm dA_x}{\mathrm dt}\right)$$
+The total time derivative of $A_x$ is 
+\begin{align*}
+	\frac{\mathrm dA_x}{\mathrm dt}&=\frac{\partial A_x}{\partial t}+\mathbf v\cdot\nabla A_x\\
+	&=\frac{\partial A_x}{\partial t}+v_x\frac{\partial A_x}{\partial x}+v_y\frac{\partial A_x}{\partial y}+v_z\frac{\partial A_x}{\partial z}
+\end{align*}
+The relation between the magnetic field and its vector potential gives 
+$$(\mathbf{v\times B})_x=v_y\left(\frac{\partial A_y}{\partial x}-\frac{\partial A_x}{\partial y}\right)+v_z\left(\frac{\partial A_z}{\partial x}-\frac{\partial A_x}{\partial z}\right)$$
+combining these expressions gives 
+\begin{equation}
+	m\ddot x=q[\mathbf E_x + (\mathbf v \times \mathbf B)_x]
+\end{equation}
+Now we turn our attention to cases when there are forces not arising from a potential. In this case, we rewrite Lagrange's equation in the form
+$$\frac{\mathrm d}{\mathrm dt}\left(\frac{\partial L}{\partial\dot q_j}\right)-\frac{\partial L}{\partial q_j}=Q_j$$
+When the frictional force is proportional to the velocity of the particle, frictional forces can be derived in terms of a function $\mathcal F$, also known as $\textbf{Rayleigh's dissipiation function}$, defined as 
+\begin{equation}
+	\mathcal F=\frac 12\sum_i\left(k_x v_{ix}^2+k_yv_{iy}^2+k_zv_{iz}^2\right)
+\end{equation}
+From this, it is clear that the friction force is the gradient of the dissipation function. 
+$$\mathbf F_f=-\nabla_v\mathcal F$$
+The work done against friction is 
+$$\mathrm dW_f=-\mathbf F_f\cdot\mathrm d\mathbf r=-\mathbf F_f\cdot\mathbf v\mathrm dt=\left(k_xv_x^2+k_yv_y^2+k_zv_z^2\right)\mathrm dt=2\mathcal F\mathrm dt$$
+The generalized force resulting from the force of friction is given by
+\begin{align*}
+	Q_j=\sum_i\mathbf F_{f_i}\cdot\frac{\partial\mathbf r_i}{\partial q_j}&=-\sum\nabla_v\mathcal F\cdot\frac{\partial\mathbf r_i}{\partial q_i}\\
+	&=-\sum\nabla_v\mathcal F\cdot\frac{\partial\mathbf{\dot r_i}}{\partial\dot q_j}\\
+	&=-\frac{\partial\mathcal F}{\partial\dot q_j}
+\end{align*}
+The Lagrange equations with dissipation become 
+\begin{equation}
+	\frac{\mathrm d}{\mathrm dt}\left(\frac{\partial L}{\partial \dot q_j}\right)-\frac{\partial L}{\partial q_j}+\frac{\partial \mathcal F}{\partial \dot q_j}=0
+\end{equation}
+\subsection{Simple applications of the lagrangian formulation}
+We have greatly reduced the work by eliminating the forces of constraint from the equations of motion, and replacing the many vector forces and accelerations with two scalar functions, T and V.  A straightforward procedure can now be established for all problems of mechanics to which the Lagrangian formulation is applicable. We only have to apply the transformation equations and find the Lagrangian. 
+
+Motion of one particle: using polar coordinates. Here, the equations of transformations are simply
+\begin{align*}
+	x=r\cos\theta\\
+	y=r\sin\theta
+\end{align*}
+using equation 1.28, the velocities are given by
+\begin{align*}
+	\dot x=\dot r\cos\theta-r\dot\theta\sin\theta\\
+	\dot y=\dot r\sin\theta+r\dot\theta\cos\theta
+\end{align*}
+The kinetic energy then reduces to 
+$$T=\frac 12m\left[\dot r^2+(r\dot\theta)^2\right]$$
+since there are two generalized coordinates, there are two Lagrange equations: plugging them into equation 1.35, we get
+\begin{align*}
+	m\ddot r-mr\dot\theta^2=F_r\\
+	\frac{\mathrm d}{\mathrm dt}(mr^2\dot\theta)=mr^2\ddot\theta+2mr\dot r\dot\theta=rF_\theta
+\end{align*}
+the second equation is identical to the torque equation.
+\subsection{Derivations}
+1. Show that for a single particle with constant mass,
+$$\frac{\mathrm dT}{\mathrm dt}=\mathbf F\cdot\mathbf v$$
+and if the mass varies time, the corresponding equation is
+$$\frac{\mathrm d(mT)}{\mathrm dt}=\mathbf F\cdot\mathbf p$$
+Using the definition of the kinetic energy for a single particle,
+$$\frac{\mathrm d}{\mathrm dt}\left(\frac 12m(\mathbf{v\cdot v})\right)=\frac 12m\left(2\mathbf v\cdot\frac{\mathrm d\mathbf v}{\mathrm dt}\right)=m\frac{\mathrm d\mathbf v}{\mathrm dt}\cdot\mathbf v=\mathbf{F\cdot v}$$
+and for the variable mass case,
+$$\frac{\mathrm d}{\mathrm dt}\left(\frac 12m^2v^2\right)=\frac 12\frac{\mathrm d}{\mathrm dt}(\mathbf{p\cdot p})=\mathbf{\dot p\cdot p}=\mathbf F\cdot\mathbf p$$
+2. Prove that the magnitude R of the position vector for the center of mass from an arbitrary origin is given by the equation 
+$$M^2R^2=M\sum_im_ir_i^2-\frac 12\sum_{i,j}m_im_jr_{ij}^2$$
+using $\mathbf r_{ij}=\mathbf{r_i-r_j}$, we see that
+\begin{align*}
+	M^2R^2&=M\mathbf R\cdot M\mathbf R=\sum_im_i\mathbf r_i\cdot\sum_jm_j\mathbf r_j\\
+	&=\sum_{i,j}m_im_j\mathbf{r_i\cdot r_j}\\
+	&=\sum_{i,j}m_im_j\mathbf{r_i\cdot(r_i-r_{ij})}\\
+	&=\sum_{i,j}m_im_jr_i^2-\sum_{i,j}m_im_j\mathbf{r_i\cdot r_{ij}}\\
+	&=\sum_jm_j\sum_im_ir_i^2-\sum_{i,j}m_im_j\mathbf{r_{ij}}\cdot\frac 12\mathbf{((r_i+r_j)+r_{ij})}\\
+	&=M\sum_im_ir_i^2-\frac 12\sum_{i,j}m_im_j\mathbf{(r_{ij}\cdot r_{ij})}-\frac 12\sum_{i,j}m_im_j(r_i^2-r_j^2)\\
+	&=M\sum_im_ir_i^2-\frac 12\sum_{i,j}m_im_jr_{ij}^2
+\end{align*}
+3. Suppose a system of two particles is known to obey the equations of motion
+$$M\frac{\mathrm d^2\mathbf R}{\mathrm dt^2}=\sum_i\mathbf F_i^{(e)}\equiv\mathbf F^{(e)}$$
+and
+$$\frac{\mathrm d\mathbf L}{\mathrm dt}=\mathbf N^{(e)}$$
+from the equations of the motion show that the internal forces satisfy both the weak and the strong law of action. 
+
+the equations of motion for the system of particles is
+\begin{align*}
+	&M\frac{\mathrm d^2\mathbf R}{\mathrm dt^2}=\mathbf{F}_i^{(e)}+\mathbf{F}_j^{(e)}\\
+	&\frac{\mathrm d}{\mathrm dt}(\mathbf{r}_i\times m_i\mathbf{v}_i+\mathbf{r}_j\times m_j\mathbf{v}_j)=\mathbf r_i\times\mathbf F_i^{(e)}+\mathbf r_j\times\mathbf F_j^{(e)}
+\end{align*}
+the equations of motion for the individual particles is
+\begin{align*}
+	&m_i\ddot{\mathbf r}_i=\mathbf{F}_i^{(e)}+\mathbf F_{ji}\\
+	&m_j\ddot{\mathbf r}_j=\mathbf{F}_j^{(e)}+\mathbf F_{ij}\\
+	&\frac{\mathrm d}{\mathrm dt}(\mathbf{r}_i\times m_i\mathbf{v}_i)=\mathbf r_i\times\mathbf F_i^{(e)}+\mathbf r_i\times\mathbf F_{ji}\\
+	&\frac{\mathrm d}{\mathrm dt}(\mathbf{r}_j\times m_j\mathbf{v}_j)=\mathbf r_j\times\mathbf F_j^{(e)}+\mathbf r_j\times\mathbf F_{ij}
+\end{align*}
+solving for the external forces and plugging them into the equations of motion for the system,
+\begin{align*}
+	&M\frac{\mathrm d^2\mathbf R}{\mathrm dt^2}=m_i\ddot{\mathbf r}_i+m_j\ddot{\mathbf r}_j-(\mathbf{F}_{ij}+\mathbf{F}_{ji})\\
+	&\frac{\mathrm d^2}{\mathrm dt^2}(m_i\mathbf r_i+m_j\mathbf r_j)-(m_i\ddot{\mathbf r}_i+m_j\ddot{\mathbf r}_j)=(\mathbf{F}_{ij}+\mathbf{F}_{ji})\\
+	&\mathbf{F}_{ij}+\mathbf{F}_{ji}=0
+\end{align*}
+which is identical to the weak law of action and reaction. The second second equation of motion for the system of particles is 
+\begin{align*}
+	&\frac{\mathrm d}{\mathrm dt}(\mathbf{r}_i\times m_i\mathbf{v}_i+\mathbf{r}_j\times m_j\mathbf{v}_j)=   \frac{\mathrm d}{\mathrm dt}(\mathbf{r}_i\times m_i\mathbf{v}_i)-\mathbf r_i\times\mathbf F_{ji}+ \frac{\mathrm d}{\mathrm dt}(\mathbf{r}_j\times m_j\mathbf{v}_j)-\mathbf r_j\times\mathbf F_{ij}\\
+	&\mathbf r_i\times\mathbf F_{ji}+\mathbf r_j\times\mathbf F_{ij}=(\mathbf r_i-\mathbf r_j)\times\mathbf F_{ij}=0
+\end{align*}
+which is identical to the strong law of action and reaction.\\
+4. The equations of constraint for the rolling disk,
+\begin{align*}
+	\mathrm dx-a\sin\theta\mathrm d\phi=0\\
+	\mathrm dy+a\cos\theta\mathrm d\phi=0
+\end{align*}
+, are special cases of general linear differential equations of constraint of the form 
+$$\sum^n_{i=1}g_i(x_i,\cdots,x_n)\mathrm dx_i=0$$
+a constraint condition of this type is holonomic iff an integrating function can be found that turns it into an exact differential. Clearly the function must be such that
+\begin{equation}\frac{\partial(fg_i)}{\partial x_j}=\frac{\partial(fg_j)}{\partial x_i}\end{equation}
+it is obvious that the coordinates of the system are $x,y,\theta,\phi$. Using equation 1.41, we get 
+\begin{align*}
+	&\frac{\partial f}{\partial\theta}=0\\
+	&\frac{\partial f}{\partial\phi}=-a\frac{\partial f\sin\theta}{\partial x}\\
+	&a\frac{\partial f\sin\theta}{\partial\theta}=0
+\end{align*}
+the first equation means that $f$ does not depend on $\theta$, meaning $f=f(x,\phi)$. In this case, the last equation doesn't always hold true, meaning no integrating factor can be found for the equations of constraint. Similarly, no such integrating factor can be found for the second equation, since replacing the $x$ with $y$ doesn't affect our method\\
+5. Two wheels of radius a are mounted on the ends of a common axle of length b such that the wheels rotate independently. The whole combination rolls without slipping on a plane. Show that there are two nonholonomic equations of constraint,
+\begin{align*}
+	&\cos\theta\mathrm dx+\sin\theta\mathrm dy=0\\
+	&\sin\theta\mathrm dx-\cos\theta\mathrm dy=\frac 12a(\mathrm d\phi+\mathrm d\phi')
+\end{align*}
+and one holonomic equation of constraint,
+$$\theta=C-\frac ab(\phi-\phi')$$
+the nonslipping condition states 
+\begin{align*}
+	&v=a\dot\phi\\
+	&v'=a\dot\phi'
+\end{align*}
+In the center of axle's frame of reference, the velocities of the wheels must be equal and opposite, since it is the center of mass. Symbolically,
+\begin{align*}
+	&\mathbf v-\mathbf v_m=-(\mathbf v'-\mathbf v_m)\\
+	&\mathbf v_m=\frac 12(\mathbf v+\mathbf v')\\
+\end{align*}
+all the velocities are perpendicular to $\theta$, so we can convert from generalized coordinates to the coordinates of the center of the axle.
+\begin{align*}
+	&\dot x=|\mathbf v_m|\sin\theta\\
+	&\dot y=-|\mathbf v_m|\cos\theta
+\end{align*}
+since the wheels are pointing in the same direction, we simply add the velocities when converting from the velocity of the center to the velocity of the wheels.
+\begin{align*}
+	&\dot x=\frac 12a\sin\theta (\dot\phi+\dot\phi')\\
+	&\dot y=-\frac 12a\cos\theta (\dot\phi+\dot\phi')
+\end{align*}
+it is obvious that 
+\begin{align*}
+	&\cos\theta\mathrm dx+\sin\theta\mathrm dy=0\\
+	&\sin\theta\mathrm dx-\cos\theta\mathrm dy=\frac 12a(\mathrm d\phi+\mathrm d\phi')
+\end{align*}
+and in the frame of reference of the center, the rate at which the axle is spinning has to match up with the wheels' speed.
+$$\dot\theta\frac b2=(v'-v_{m})=\frac 12(v'-v)$$
+using the nonslipping condition again,
+$$\mathrm d\theta=\frac ab(\mathrm d\phi'-\mathrm d\phi)$$
+integrating and rearranging,
+$$\theta=C-\frac ab(\phi-\phi')$$\\
+6. A particle moves in the xy plane under the constraint that its velocity vector is always directed towards a point on the x axis whose abscissa is some given function of time $f(t)$. Show that for $f(t)$ is differentiable, but otherwise arbitrary, the constraint is nonholonomic.  (abscissa is simply the x value)\\
+
+Let $\theta$ be the angle between the x axis and the line connecting $(f(t),0)$ and the particle and r be the distance to it.  Writing down the transformation equations and taking the derivative with respect to time,
+\begin{align*}
+	&x=f+r\cos\theta\\
+	&y=r\sin\theta\\
+	&\dot x=\dot f+\dot r\cos\theta-r\sin\theta\dot\theta\\
+	&\dot y=\dot r\sin\theta+r\cos\theta\dot\theta
+\end{align*}
+lastly, making $\theta$ point towards the particle,
+$$\tan\theta=\dot y/\dot x$$
+solving the equations gives us
+\begin{align*}
+	&\dot r\sin\theta+r\cos\theta\dot\theta=\tan\theta\dot f+\dot r\sin\theta-r\frac{\sin^2\theta}{\cos\theta}\dot\theta\\
+	&\tan\theta\dot f=r\dot\theta\frac{\cos^2\theta+\sin^2\theta}{\cos\theta}=r\dot\theta\sec\theta\\
+	&\sin\theta\mathrm df=r\mathrm d\theta
+\end{align*}
+it is evident this equation is not an exact differential because $f$ is independent of r.\\
+7. Show that Lagrange's equations in the form of 
+$$\frac{\mathrm d}{\mathrm dt}\left(\frac{\partial T}{\partial\dot q_j}\right)-\frac{\partial T}{\partial q_j}=Q_j$$
+can also be written as 
+$$\frac{\partial\dot T}{\partial\dot q_j}-2\frac{\partial T}{\partial q_j}=Q_j$$
+These are sometimes known as the Nielsen form of the Lagrange equations
+\begin{align*}
+	\frac{\mathrm d}{\mathrm dt}\left(\frac{\partial T}{\partial\dot q_j}\right)-\frac{\partial T}{\partial q_j}&=\frac{\mathrm d}{\mathrm dt}\sum_i\left(m_i\mathbf v_i\cdot\frac{\partial\mathbf v_i}{\partial\dot q_j}\right)-\sum_i\left(m_i\mathbf v_i\cdot\frac{\partial\mathbf v_i}{\partial q_j}\right)\\
+	&=\sum_im_i\left( \frac{\mathrm d\mathbf v_i}{\mathrm dt}\frac{\partial\mathbf v_i}{\partial\dot q_j}+\mathbf v_i\frac{\mathrm d}{\mathrm dt}\frac{\partial\mathbf v_i}{\partial\dot q_j}-\mathbf v_i\frac{\partial\mathbf v_i}{\partial q_j} \right)
+\end{align*}
+since
+$$\frac{\mathrm d}{\mathrm dt}\left(\frac{\partial\mathbf v_i}{\partial \dot q_j}\right)=\frac{\mathrm d}{\mathrm dt}\left(\frac{\partial\mathbf r_i}{\partial q_j}\right)=\frac{\partial\mathbf v_i}{\partial q_j}$$
+the last two terms cancel out, leaving us with
+$$\frac{\mathrm d}{\mathrm dt}\left(\frac{\partial T}{\partial\dot q_j}\right)-\frac{\partial T}{\partial q_j}=\sum_im_i\left(\frac{\mathrm d\mathbf v_i}{\mathrm dt}\frac{\partial\mathbf v_i}{\partial\dot q_j}\right)$$
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
